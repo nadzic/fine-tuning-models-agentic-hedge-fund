@@ -1,0 +1,22 @@
+[project]
+name = "finance-reranker"
+version = "0.1.0"
+description = "Fine-tuning a cross-encoder reranker for financial document retrieval."
+requires-python = ">=3.11"
+dependencies = [
+  "torch",
+  "transformers",
+  "datasets",
+  "sentence-transformers",
+  "peft",
+  "pyyaml",
+  "pydantic",
+  "pandas",
+  "numpy",
+  "scikit-learn",
+  "tqdm",
+  "jupyter",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
