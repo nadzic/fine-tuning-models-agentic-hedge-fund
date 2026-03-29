@@ -1,5 +1,11 @@
 # Fine-Tuning Reranker Finance
 
+![Unsloth](https://img.shields.io/badge/Unsloth-Fast%20Fine--Tuning-111827?logo=lightning&logoColor=yellow)
+![QLoRA](https://img.shields.io/badge/QLoRA-4bit%20PEFT-16a34a)
+![Hugging%20Face](https://img.shields.io/badge/Hugging%20Face-Transformers-FFD21E?logo=huggingface&logoColor=black)
+![Transformers](https://img.shields.io/badge/Transformers-4.0%2B-2563eb)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?logo=pytorch&logoColor=white)
+
 Fine-tuning a cross-encoder reranker for financial document retrieval using SEC filings and earnings call transcripts.
 
 ## Overview
