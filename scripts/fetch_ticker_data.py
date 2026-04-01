@@ -19,7 +19,7 @@ USER_AGENT = os.getenv("SEC_USER_AGENT", "openclaw-dataset-pipeline/1.0 nik@exam
 ALPHA_VANTAGE_KEY = os.getenv("ALPHA_VANTAGE_API_KEY") or os.getenv("ALPHAVANTAGE_API_KEY") or os.getenv("AV_API_KEY")
 
 
-def http_json(url: str) -> Any:
+def http_json(url: str) -> dict:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
@@ -59,7 +59,7 @@ def flatten_units(units: Dict[str, Any]) -> List[Dict[str, Any]]:
 def pick_recent(entries: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     usable = [e for e in entries if isinstance(e.get("val"), (int, float))]
 
-    def sort_key(entry: Dict[str, Any]) -> tuple:
+    def sort_key(entry: Dict[str, Any]) -> tuple[int, str, str, str]:
         fy = entry.get("fy")
         fy_num = fy if isinstance(fy, int) else -1
         fp = str(entry.get("fp") or "")

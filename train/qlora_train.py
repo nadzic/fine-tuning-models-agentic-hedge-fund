@@ -3,14 +3,13 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import random
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict
 
 import torch
-from datasets import Dataset, load_dataset
+from datasets import DatasetDict, load_dataset
 from unsloth import FastLanguageModel
 from trl import SFTConfig, SFTTrainer
 
@@ -110,7 +109,7 @@ def ensure_files(train_file: Path, eval_file: Path) -> None:
         raise FileNotFoundError(f"Missing dataset files: {', '.join(missing)}")
 
 
-def load_jsonl_dataset(train_file: Path, eval_file: Path) -> Dict[str, Dataset]:
+def load_jsonl_dataset(train_file: Path, eval_file: Path) -> DatasetDict:
     dataset = load_dataset(
         "json",
         data_files={
@@ -118,6 +117,7 @@ def load_jsonl_dataset(train_file: Path, eval_file: Path) -> Dict[str, Dataset]:
             "eval": str(eval_file),
         },
     )
+    assert isinstance(dataset, DatasetDict)
     return dataset
 
 
@@ -164,11 +164,11 @@ def main() -> None:
         processing_class=tokenizer,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        dataset_text_field="text",
-        max_seq_length=args.max_seq_length,
-        packing=False,
         args=SFTConfig(
             output_dir=str(args.output_dir),
+            dataset_text_field="text",
+            max_length=args.max_seq_length,
+            packing=False,
             per_device_train_batch_size=args.batch_size,
             per_device_eval_batch_size=args.eval_batch_size,
             gradient_accumulation_steps=args.gradient_accumulation_steps,

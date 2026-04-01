@@ -24,10 +24,10 @@ Facts:
 
 def main() -> None:
     if torch.backends.mps.is_available():
-        device = "mps"
+        device = torch.device("mps")
         dtype = torch.float16
     else:
-        device = "cpu"
+        device = torch.device("cpu")
         dtype = torch.float32
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
@@ -35,7 +35,8 @@ def main() -> None:
         MODEL_ID,
         torch_dtype=dtype,
         low_cpu_mem_usage=True,
-    ).to(device)
+    )
+    model = model.to(device)  # pyright: ignore[reportArgumentType]
 
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},

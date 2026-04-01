@@ -160,7 +160,7 @@ def build_output(record: Dict[str, Any], angle_key: str) -> str:
                 f"That makes it hard to underwrite operating leverage with high confidence."
             ),
             "risks": (
-                f"The main risks are reversal in margin trend, weaker cash conversion, and a need to reinvest more heavily than the current operating profile implies."
+                "The main risks are reversal in margin trend, weaker cash conversion, and a need to reinvest more heavily than the current operating profile implies."
             ),
             "conclusion": (
                 f"Viewed through a buy-side lens, {ticker} is most compelling as an efficiency story if the reported margin and free cash flow trends prove durable. Without that confirmation, the thesis weakens quickly."

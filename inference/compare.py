@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+from typing import Any
 
 import torch
 from unsloth import FastLanguageModel
@@ -135,7 +136,7 @@ def generate_response(
         return_tensors="pt",
     ).to(model.device)
 
-    generate_kwargs = {
+    generate_kwargs: dict[str, Any] = {
         "max_new_tokens": max_new_tokens,
         "do_sample": do_sample,
         "use_cache": True,
