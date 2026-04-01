@@ -11,8 +11,8 @@ from typing import Dict, List
 
 import torch
 from datasets import Dataset, load_dataset
-from trl import SFTConfig, SFTTrainer
 from unsloth import FastLanguageModel
+from trl import SFTConfig, SFTTrainer
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TRAIN_FILE = ROOT / "data" / "processed" / "train.jsonl"
@@ -161,7 +161,7 @@ def main() -> None:
 
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
         dataset_text_field="text",
