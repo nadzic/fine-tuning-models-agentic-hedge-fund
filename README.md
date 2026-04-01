@@ -117,7 +117,9 @@ This is still a real fine-tuning run, but it is intentionally small and mainly m
 
 Example smoke-test output:
 
-![Smoke test training output](runs/smoke-test.png)
+<img src="./runs/smoke-test.png" alt="Smoke test training output" width="900" />
+
+[Open the full-size smoke-test screenshot](./runs/smoke-test.png)
 
 ### Optional exports
 
