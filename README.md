@@ -1,14 +1,14 @@
-# Fine-Tuning Reranker Finance
+# Fine-Tuning Financial Memo Models
 
-This repo now contains two related pieces:
+This repo contains two related pieces:
 
 1. a reproducible dataset pipeline for hedge-fund style stock memo instruction tuning
-2. a QLoRA training script for fine-tuning an instruction model on that dataset
+2. a QLoRA training script for fine-tuning a financial memo generation model on that dataset
 
 ## Folder structure
 
 ```text
-fine-tuning-reranker-finance/
+fine-tuning-models-agentic-hedge-fund/
 ├── data/
 │   ├── raw/
 │   └── processed/
@@ -52,7 +52,7 @@ The main training entrypoint is:
 
 - `train/qlora_train.py`
 
-It is designed around the Unsloth QLoRA workflow and uses the local JSONL files in `data/processed/`.
+It is designed around the Unsloth QLoRA workflow and uses the local JSONL files in `data/processed/` to fine-tune a causal language model for memo-style financial analysis.
 
 ### Example
 
