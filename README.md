@@ -121,6 +121,12 @@ Example smoke-test output:
 
 [Open the full-size smoke-test screenshot](./runs/smoke-test.png)
 
+Example inference-test output:
+
+<img src="./runs/inference-run-test.png" alt="Inference test output" width="900" />
+
+[Open the full-size inference-test screenshot](./runs/inference-run-test.png)
+
 ### Optional exports
 
 You can also request additional saves:
