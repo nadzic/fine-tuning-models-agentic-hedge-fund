@@ -85,6 +85,31 @@ def memo_section(section: str, body: str) -> str:
     return f"{section}\n{body.strip()}"
 
 
+def first_meaningful(items: List[str], fallback: str) -> str:
+    for item in items:
+        text = safe_text(item, fallback="").strip()
+        if text and not text.lower().startswith("no recent news items available"):
+            return text
+    return fallback
+
+
+def compress_context(record: Dict[str, Any]) -> Dict[str, str]:
+    context_items = bullet_list(record.get("context") or [], "Limited context available from structured company and financial disclosures.")
+    summary = first_meaningful(context_items, "Limited context available from structured company and financial disclosures.")
+    sector = "unknown"
+    industry = "unknown"
+    for item in context_items:
+        if item.startswith("Sector:"):
+            sector = item.split(":", 1)[1].strip() or "unknown"
+        elif item.startswith("Industry:"):
+            industry = item.split(":", 1)[1].strip() or "unknown"
+    return {
+        "summary": summary,
+        "sector": sector,
+        "industry": industry,
+    }
+
+
 def build_output(record: Dict[str, Any], angle_key: str) -> str:
     ticker = safe_text(record.get("ticker"))
     company = safe_text(record.get("company_name"))
@@ -95,32 +120,71 @@ def build_output(record: Dict[str, Any], angle_key: str) -> str:
     valuation_note = safe_text(metrics.get("valuation_note"))
     segment_lines = format_segment_growth(metrics.get("segment_growth"))
     segment_summary = "; ".join(segment_lines)
-    context_items = bullet_list(record.get("context") or [], "Limited context available from structured company and financial disclosures.")
-    context_summary = "; ".join(context_items[:2])
+    context = compress_context(record)
+    context_summary = context["summary"]
+    sector = context["sector"]
+    industry = context["industry"]
+
+    business_overview = (
+        f"{company} ({ticker}) operates in {sector}"
+        f"{'' if industry == 'unknown' else f', specifically {industry}'}"
+        f". The factual setup is mixed: revenue growth is {revenue_growth}, operating margin trend is {operating_margin_trend}, "
+        f"and free cash flow trend is {free_cash_flow_trend}. Valuation context is {valuation_note}."
+    )
 
     angle_templates = {
         "growth": {
-            "bull": f"The main upside case rests on revenue growth of {revenue_growth} and segment commentary of {segment_summary}. If these trends prove durable, {company} could compound from a stronger operating base.",
-            "bear": f"The growth case is only as strong as the disclosed trajectory. Revenue growth is described as {revenue_growth}, and limited incremental detail beyond {segment_summary} may constrain conviction.",
-            "risks": f"Primary risks include growth slowing from current levels, segment performance diverging from the disclosed pattern, and context factors such as {context_summary} undermining the upside narrative.",
-            "conclusion": f"On balance, {ticker} screens as a growth-oriented idea only to the extent the disclosed revenue and segment trends continue to support the business trajectory. Positioning should remain evidence-driven.",
+            "bull": (
+                f"The long case rests primarily on the reported revenue trajectory. Revenue growth is {revenue_growth}, "
+                f"while free cash flow is {free_cash_flow_trend}. If top-line momentum is durable and cash generation continues to confirm the trend, "
+                f"the setup can support further upside even without detailed segment disclosure."
+            ),
+            "bear": (
+                f"The pushback is that the growth evidence is incomplete. Segment detail remains {segment_summary}, and operating margin trend is {operating_margin_trend}. "
+                f"That leaves open the risk that revenue direction does not translate into better incremental economics."
+            ),
+            "risks": (
+                f"Key risks are a break in the reported revenue trend, weaker conversion of growth into cash flow, and business-specific execution issues tied to the disclosed context: {context_summary}."
+            ),
+            "conclusion": (
+                f"Net, {ticker} fits a growth-oriented memo only if the reported revenue trajectory remains intact and cash generation continues to back it up. The evidence supports interest, not aggressive extrapolation."
+            ),
         },
         "margin": {
-            "bull": f"The constructive view centers on operating margin trend of {operating_margin_trend} and free cash flow trend of {free_cash_flow_trend}. If efficiency is improving sustainably, earnings quality may strengthen even without outsized top-line acceleration.",
-            "bear": f"The efficiency case is incomplete if margin gains are temporary or if free cash flow trend of {free_cash_flow_trend} does not confirm underlying improvement. Investors should avoid overstating operating leverage from limited facts.",
-            "risks": f"Key risks include cost inflation, reinvestment needs, and execution issues that could reverse the reported operating margin trend of {operating_margin_trend} or weaken cash conversion.",
-            "conclusion": f"{ticker} appears most interesting as a margin story if the disclosed operating discipline and cash flow profile remain intact. The memo should stay anchored to evidence rather than extrapolated profitability.",
+            "bull": (
+                f"The more credible bull case is around operating discipline. Operating margin trend is {operating_margin_trend}, and free cash flow trend is {free_cash_flow_trend}. "
+                f"If cost control and cash conversion are holding, earnings quality may be improving even if revenue growth is only {revenue_growth}."
+            ),
+            "bear": (
+                f"The counterpoint is that margin narratives are fragile when top-line support is limited. Revenue growth is {revenue_growth}, and the dataset does not provide segment evidence beyond {segment_summary}. "
+                f"That makes it hard to underwrite operating leverage with high confidence."
+            ),
+            "risks": (
+                f"The main risks are reversal in margin trend, weaker cash conversion, and a need to reinvest more heavily than the current operating profile implies."
+            ),
+            "conclusion": (
+                f"Viewed through a buy-side lens, {ticker} is most compelling as an efficiency story if the reported margin and free cash flow trends prove durable. Without that confirmation, the thesis weakens quickly."
+            ),
         },
         "risk": {
-            "bull": f"The stock can still merit attention if existing business quality and context support resilience, particularly where valuation note of {valuation_note} suggests expectations may already reflect some caution.",
-            "bear": f"The principal downside argument is that valuation and risk may not leave much room for error. The disclosed valuation note is {valuation_note}, while revenue growth is {revenue_growth} and margin trend is {operating_margin_trend}, which may not justify a more aggressive stance.",
-            "risks": f"Primary risks include multiple compression, deterioration in revenue growth or profitability, and any company-specific issues hinted at by {context_summary}.", 
-            "conclusion": f"Overall, {ticker} is best framed as a risk-aware idea: potentially investable, but only with discipline around valuation, business quality, and the limits of the available facts.",
+            "bull": (
+                f"The constructive angle is that the business still shows support from core operating facts. Revenue growth is {revenue_growth}, free cash flow trend is {free_cash_flow_trend}, and valuation context is {valuation_note}. "
+                f"If expectations are already calibrated to these conditions, downside may be more balanced than headline multiples suggest."
+            ),
+            "bear": (
+                f"The more cautious view is straightforward: valuation already matters here. The disclosed valuation context is {valuation_note}, while operating margin trend is {operating_margin_trend} and segment detail is {segment_summary}. "
+                f"If execution slips, the setup leaves limited room for error."
+            ),
+            "risks": (
+                f"Primary risks are multiple compression, deterioration in the reported operating profile, and company-specific issues implied by the business context: {context_summary}."
+            ),
+            "conclusion": (
+                f"Bottom line: {ticker} belongs in a risk-aware memo. The business may be investable, but the case should be framed around valuation discipline and the limits of the disclosed evidence."
+            ),
         },
     }
 
     template = angle_templates[angle_key]
-    business_overview = f"{company} ({ticker}) is evaluated using structured company and financial disclosure data. Available facts indicate revenue growth of {revenue_growth}, operating margin trend of {operating_margin_trend}, free cash flow trend of {free_cash_flow_trend}, and segment detail summarized as {segment_summary}."
 
     return "\n\n".join(
         [

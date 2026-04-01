@@ -1,0 +1,21 @@
+{
+  "ticker": "META",
+  "company_name": "Meta Platforms, Inc.",
+  "metrics": {
+    "revenue_growth": "decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3)",
+    "operating_margin_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "free_cash_flow_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 22.83; EVToRevenue reported by Alpha Vantage: 6.76; MarketCapitalization reported by Alpha Vantage: 1356802949000"
+  },
+  "news": [],
+  "context": [
+    "Meta Platforms, Inc. develops products that enable people to connect and share with friends and family through mobile devices, PCs, virtual reality headsets, wearables and home devices around the world. The company is headquartered in Menlo Park, California.",
+    "Sector: COMMUNICATION SERVICES",
+    "Industry: INTERNET CONTENT & INFORMATION"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0001326801",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

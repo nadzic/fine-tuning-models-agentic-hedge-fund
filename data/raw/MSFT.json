@@ -1,0 +1,21 @@
+{
+  "ticker": "MSFT",
+  "company_name": "MICROSOFT CORPORATION",
+  "metrics": {
+    "revenue_growth": "decreasing based on SEC companyfacts across recent reported periods (FY2011Q2, FY2011Q2)",
+    "operating_margin_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2026Q2, FY2026Q2)",
+    "free_cash_flow_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2026Q2, FY2026Q2)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 22.48; EVToRevenue reported by Alpha Vantage: 9.18; MarketCapitalization reported by Alpha Vantage: 2667926258000"
+  },
+  "news": [],
+  "context": [
+    "Microsoft Corporation is an American multinational technology company which produces computer software, consumer electronics, personal computers, and related services. Its best known software products are the Microsoft Windows line of operating systems, the Microsoft Office suite, and the Internet Explorer and Edge web browsers. Its flagship hardware products are the Xbox video game consoles and the Microsoft Surface lineup of touchscreen personal computers. Microsoft ranked No. 21 in the 2020 Fortune 500 rankings of the largest United States corporations by total revenue; it was the world's largest software maker by revenue as of 2016. It is considered one of the Big Five companies in the U.S. information technology industry, along with Google, Apple, Amazon, and Facebook.",
+    "Sector: TECHNOLOGY",
+    "Industry: SOFTWARE - INFRASTRUCTURE"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0000789019",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

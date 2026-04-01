@@ -1,0 +1,21 @@
+{
+  "ticker": "NFLX",
+  "company_name": "NETFLIX INC",
+  "metrics": {
+    "revenue_growth": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "operating_margin_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "free_cash_flow_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 36.75; EVToRevenue reported by Alpha Vantage: 8.7; MarketCapitalization reported by Alpha Vantage: 394368483000"
+  },
+  "news": [],
+  "context": [
+    "Netflix, Inc. is an American over-the-top content platform and production company headquartered in Los Gatos, California. Netflix was founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. The company's primary business is a subscription-based streaming service offering online streaming from a library of films and television series, including those produced in-house.",
+    "Sector: COMMUNICATION SERVICES",
+    "Industry: ENTERTAINMENT"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0001065280",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

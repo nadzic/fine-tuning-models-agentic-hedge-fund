@@ -1,0 +1,21 @@
+{
+  "ticker": "AMD",
+  "company_name": "ADVANCED MICRO DEVICES, INC.",
+  "metrics": {
+    "revenue_growth": "decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3)",
+    "operating_margin_trend": "increasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "free_cash_flow_trend": "increasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 75.11; EVToRevenue reported by Alpha Vantage: 9.28; MarketCapitalization reported by Alpha Vantage: 319625724000"
+  },
+  "news": [],
+  "context": [
+    "Advanced Micro Devices, Inc. (AMD) is an American multinational semiconductor company based in Santa Clara, California, that develops computer processors and related technologies for business and consumer markets. AMD's main products include microprocessors, motherboard chipsets, embedded processors and graphics processors for servers, workstations, personal computers and embedded system applications.",
+    "Sector: TECHNOLOGY",
+    "Industry: SEMICONDUCTORS"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0000002488",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

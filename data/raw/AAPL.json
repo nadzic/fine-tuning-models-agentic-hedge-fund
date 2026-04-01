@@ -1,0 +1,21 @@
+{
+  "ticker": "AAPL",
+  "company_name": "Apple Inc.",
+  "metrics": {
+    "revenue_growth": "increasing based on SEC companyfacts across recent reported periods (FY2018FY, FY2018FY)",
+    "operating_margin_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1)",
+    "free_cash_flow_trend": "increasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 31.26; EVToRevenue reported by Alpha Vantage: 9.45; MarketCapitalization reported by Alpha Vantage: 3624949514000"
+  },
+  "news": [],
+  "context": [
+    "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software, and online services. Apple is the world's largest technology company by revenue (totalling $274.5 billion in 2020) and, since January 2021, the world's most valuable company. As of 2021, Apple is the world's fourth-largest PC vendor by unit sales, and fourth-largest smartphone manufacturer. It is one of the Big Five American information technology companies, along with Amazon, Google, Microsoft, and Facebook.",
+    "Sector: TECHNOLOGY",
+    "Industry: CONSUMER ELECTRONICS"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0000320193",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

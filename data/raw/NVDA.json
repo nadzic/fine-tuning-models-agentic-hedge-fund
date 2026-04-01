@@ -1,0 +1,21 @@
+{
+  "ticker": "NVDA",
+  "company_name": "NVIDIA CORP",
+  "metrics": {
+    "revenue_growth": "increasing based on SEC companyfacts across recent reported periods (FY2026Q3, FY2026Q3)",
+    "operating_margin_trend": "increasing based on SEC companyfacts across recent reported periods (FY2026Q3, FY2026Q3)",
+    "free_cash_flow_trend": "increasing based on SEC companyfacts across recent reported periods (FY2026Q3, FY2026Q3)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 33.64; EVToRevenue reported by Alpha Vantage: 19.2; MarketCapitalization reported by Alpha Vantage: 4014456963000"
+  },
+  "news": [],
+  "context": [
+    "Nvidia Corporation is an American multinational technology company incorporated in Delaware and based in Santa Clara, California. It designs graphics processing units (GPUs) for the gaming and professional markets, as well as system on a chip units (SoCs) for the mobile computing and automotive market.",
+    "Sector: TECHNOLOGY",
+    "Industry: SEMICONDUCTORS"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0001045810",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

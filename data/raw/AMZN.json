@@ -1,0 +1,21 @@
+{
+  "ticker": "AMZN",
+  "company_name": "AMAZON COM INC",
+  "metrics": {
+    "revenue_growth": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "operating_margin_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "free_cash_flow_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 28.03; EVToRevenue reported by Alpha Vantage: 3.117; MarketCapitalization reported by Alpha Vantage: 2157182321000"
+  },
+  "news": [],
+  "context": [
+    "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence. It is one of the Big Five companies in the U.S. information technology industry, along with Google, Apple, Microsoft, and Facebook. The company has been referred to as one of the most influential economic and cultural forces in the world, as well as the world's most valuable brand.",
+    "Sector: CONSUMER CYCLICAL",
+    "Industry: INTERNET RETAIL"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0001018724",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

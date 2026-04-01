@@ -1,0 +1,21 @@
+{
+  "ticker": "AVGO",
+  "company_name": "Broadcom Inc.",
+  "metrics": {
+    "revenue_growth": "decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3)",
+    "operating_margin_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1)",
+    "free_cash_flow_trend": "increasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 60.22; EVToRevenue reported by Alpha Vantage: 27.54; MarketCapitalization reported by Alpha Vantage: 1467471626000"
+  },
+  "news": [],
+  "context": [
+    "Broadcom Inc. is an American designer, developer, manufacturer and global supplier of a wide range of semiconductor and infrastructure software products. Broadcom's product offerings serve the data center, networking, software, broadband, wireless, and storage and industrial markets.",
+    "Sector: TECHNOLOGY",
+    "Industry: SEMICONDUCTORS"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0001730168",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

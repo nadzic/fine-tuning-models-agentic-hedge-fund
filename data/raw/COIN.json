@@ -1,0 +1,21 @@
+{
+  "ticker": "COIN",
+  "company_name": "Coinbase Global, Inc.",
+  "metrics": {
+    "revenue_growth": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "operating_margin_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "free_cash_flow_trend": "decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)",
+    "segment_growth": {},
+    "valuation_note": "PERatio reported by Alpha Vantage: 36.13; EVToRevenue reported by Alpha Vantage: 5.34; MarketCapitalization reported by Alpha Vantage: 43358245000"
+  },
+  "news": [],
+  "context": [
+    "Coinbase Global, Inc. provides financial infrastructure and technology for the crypto economy. The company is headquartered in Wilmington, Delaware.",
+    "Sector: FINANCIAL SERVICES",
+    "Industry: FINANCIAL DATA & STOCK EXCHANGES"
+  ],
+  "source_notes": {
+    "financials_source": "SEC companyfacts CIK 0001679788",
+    "news_source": "unavailable; context derived from SEC/Alpha Vantage business facts"
+  }
+}

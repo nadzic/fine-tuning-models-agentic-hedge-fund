@@ -5,8 +5,6 @@ __pycache__/
 artifacts/checkpoints/
 artifacts/adapters/
 artifacts/merged/
-data/raw/
 data/interim/
-data/processed/
 .ipynb_checkpoints/
 .DS_Store
