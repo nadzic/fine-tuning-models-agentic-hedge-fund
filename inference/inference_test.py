@@ -114,7 +114,10 @@ def main() -> None:
     FastLanguageModel.for_inference(model)
 
     prompt = build_prompt(args.instruction, input_text, tokenizer)
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    inputs = tokenizer(
+        text=prompt,
+        return_tensors="pt",
+    ).to(model.device)
 
     with torch.inference_mode():
         outputs = model.generate(
