@@ -86,6 +86,39 @@ python train/qlora_train.py \
 
 If your local environment struggles with 4-bit loading, you can also try `--no-load-in-4bit`, but that will increase memory usage.
 
+### RunPod smoke test
+
+On RunPod or similar remote GPU environments, it can help to redirect Hugging Face and temporary caches into `/workspace` so model downloads do not fill the root filesystem:
+
+```bash
+HF_HOME=/workspace/.cache/huggingface \
+HF_HUB_CACHE=/workspace/.cache/huggingface/hub \
+TRANSFORMERS_CACHE=/workspace/.cache/huggingface/transformers \
+XDG_CACHE_HOME=/workspace/.cache \
+TMPDIR=/workspace/tmp \
+TRITON_CACHE_DIR=/workspace/.cache/triton \
+HF_HUB_DISABLE_XET=1 \
+uv run python train/qlora_train.py \
+  --model-name unsloth/Qwen3.5-4B \
+  --train-file data/processed/train.jsonl \
+  --eval-file data/processed/eval.jsonl \
+  --output-dir /workspace/fine-tuning-models-agentic-hedge-fund/artifacts/smoke-run \
+  --batch-size 1 \
+  --eval-batch-size 1 \
+  --gradient-accumulation-steps 1 \
+  --max-seq-length 1024 \
+  --epochs 1 \
+  --logging-steps 1 \
+  --save-steps 1000 \
+  --eval-steps 1000
+```
+
+This is still a real fine-tuning run, but it is intentionally small and mainly meant to confirm that the full training pipeline works end to end.
+
+Example smoke-test output:
+
+![Smoke test training output](runs/smoke-test.png)
+
 ### Optional exports
 
 You can also request additional saves:
