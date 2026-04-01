@@ -1,4 +1,4 @@
-# Fine-Tuning Reranker Finance
+# Fine-Tuning Qwen 3.5 Finance
 
 This repo now contains two related pieces:
 
