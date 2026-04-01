@@ -58,7 +58,7 @@ It is designed around the Unsloth QLoRA workflow and uses the local JSONL files 
 
 ```bash
 python train/qlora_train.py \
-  --model-name unsloth/Llama-3.2-3B-Instruct-bnb-4bit \
+  --model-name unsloth/Qwen3.5-4B \
   --train-file data/processed/train.jsonl \
   --eval-file data/processed/eval.jsonl \
   --output-dir artifacts/qlora-memo \
@@ -66,6 +66,25 @@ python train/qlora_train.py \
   --gradient-accumulation-steps 4 \
   --epochs 3
 ```
+
+The training script now formats prompts via the tokenizer chat template when available, which makes it safer to switch between chat-tuned model families such as Qwen and Llama without hardcoding model-specific special tokens.
+
+### Local smoke test
+
+For a quick local check with smaller memory requirements, start with a short run like this:
+
+```bash
+python train/qlora_train.py \
+  --model-name unsloth/Qwen3.5-4B \
+  --output-dir artifacts/qwen35-test \
+  --batch-size 1 \
+  --eval-batch-size 1 \
+  --gradient-accumulation-steps 8 \
+  --max-seq-length 1024 \
+  --epochs 1
+```
+
+If your local environment struggles with 4-bit loading, you can also try `--no-load-in-4bit`, but that will increase memory usage.
 
 ### Optional exports
 
@@ -80,7 +99,7 @@ You can also request additional saves:
 pip install -r requirements.txt
 ```
 
-If you are on Apple Silicon, some GPU-oriented packages may need adjustment depending on your local stack. The script is primarily aimed at CUDA environments typically used for QLoRA fine-tuning.
+If you are on Apple Silicon, some GPU-oriented packages may need adjustment depending on your local stack. The script is primarily aimed at CUDA environments typically used for QLoRA fine-tuning, so treat local Mac runs as smoke tests unless you have a compatible setup.
 
 ## Notes
 

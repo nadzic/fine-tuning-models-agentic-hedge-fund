@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TRAIN_FILE = ROOT / "data" / "processed" / "train.jsonl"
 DEFAULT_EVAL_FILE = ROOT / "data" / "processed" / "eval.jsonl"
 DEFAULT_OUTPUT_DIR = ROOT / "artifacts" / "qlora-memo"
-DEFAULT_MODEL = "unsloth/Llama-3.2-3B-Instruct-bnb-4bit"
+DEFAULT_MODEL = "unsloth/Qwen3.5-4B"
 DEFAULT_MAX_SEQ_LENGTH = 2048
 DEFAULT_SEED = 3407
 
@@ -43,20 +43,37 @@ def set_seed(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
-def format_prompt(row: Dict[str, str], eos_token: str) -> Dict[str, str]:
+def format_prompt(row: Dict[str, str], tokenizer) -> Dict[str, str]:
     instruction = str(row["instruction"]).strip()
     input_text = str(row["input"]).strip()
     output_text = str(row["output"]).strip()
 
-    text = (
-        f"<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n"
-        f"{SYSTEM_PROMPT}<|eot_id|>\n"
-        f"<|start_header_id|>user<|end_header_id|>\n"
-        f"Instruction: {instruction}\n\n"
-        f"Input:\n{input_text}<|eot_id|>\n"
-        f"<|start_header_id|>assistant<|end_header_id|>\n"
-        f"{output_text}{eos_token}"
-    )
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {
+            "role": "user",
+            "content": f"Instruction: {instruction}\n\nInput:\n{input_text}",
+        },
+        {"role": "assistant", "content": output_text},
+    ]
+
+    if getattr(tokenizer, "chat_template", None):
+        text = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=False,
+        )
+    else:
+        eos_token = tokenizer.eos_token or ""
+        text = (
+            f"<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n"
+            f"{SYSTEM_PROMPT}<|eot_id|>\n"
+            f"<|start_header_id|>user<|end_header_id|>\n"
+            f"Instruction: {instruction}\n\n"
+            f"Input:\n{input_text}<|eot_id|>\n"
+            f"<|start_header_id|>assistant<|end_header_id|>\n"
+            f"{output_text}{eos_token}"
+        )
     return {"text": text}
 
 
@@ -139,9 +156,8 @@ def main() -> None:
     )
 
     raw_dataset = load_jsonl_dataset(args.train_file, args.eval_file)
-    eos_token = tokenizer.eos_token or ""
-    train_dataset = raw_dataset["train"].map(lambda row: format_prompt(row, eos_token))
-    eval_dataset = raw_dataset["eval"].map(lambda row: format_prompt(row, eos_token))
+    train_dataset = raw_dataset["train"].map(lambda row: format_prompt(row, tokenizer))
+    eval_dataset = raw_dataset["eval"].map(lambda row: format_prompt(row, tokenizer))
 
     trainer = SFTTrainer(
         model=model,
