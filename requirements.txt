@@ -1,0 +1,10 @@
+torch
+transformers
+datasets
+accelerate
+bitsandbytes
+trl>=0.24.0
+unsloth>=2026.3.17
+sentencepiece
+protobuf
+xformers; platform_system != "Darwin"

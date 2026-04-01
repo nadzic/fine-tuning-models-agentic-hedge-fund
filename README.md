@@ -1,84 +1,44 @@
-# Hedge-Fund Memo Fine-Tuning Dataset Pipeline
+# Fine-Tuning Reranker Finance
 
-This project lives in the `fine-tuning-reranker-finance/` folder and should be treated as the repo root for dataset work.
+This repo now contains two related pieces:
 
-It contains a reproducible pipeline for building a small instruction-tuning dataset that teaches a model to write concise hedge-fund style stock memos with the following fixed structure:
+1. a reproducible dataset pipeline for hedge-fund style stock memo instruction tuning
+2. a QLoRA training script for fine-tuning an instruction model on that dataset
 
-- Business Overview
-- Bullish Thesis
-- Bearish Thesis
-- Key Risks
-- Conclusion
-
-## Project layout
+## Folder structure
 
 ```text
 fine-tuning-reranker-finance/
-├── README.md
-├── tickers.txt
 ├── data/
 │   ├── raw/
 │   └── processed/
-└── scripts/
-    ├── fetch_ticker_data.py
-    ├── build_jsonl.py
-    └── validate_jsonl.py
+├── inference/
+│   └── compare.py
+├── train/
+│   └── qlora_train.py
+├── scripts/
+│   ├── build_jsonl.py
+│   ├── fetch_ticker_data.py
+│   └── validate_jsonl.py
+├── requirements.txt
+└── README.md
 ```
 
-## Data sources
+## Dataset
 
-The pipeline is designed to use structured, traceable sources only:
+Processed instruction-tuning files live in:
 
-- **SEC EDGAR / data.sec.gov** for company identity and companyfacts-based financial disclosures
-- **Alpha Vantage** for supplemental company overview / valuation fields when `ALPHA_VANTAGE_API_KEY` is configured
+- `data/processed/all_examples.jsonl`
+- `data/processed/train.jsonl`
+- `data/processed/eval.jsonl`
 
-If Alpha Vantage is not configured, the pipeline runs in SEC-only mode. News is intentionally left empty unless a structured approved source is added; when news is unavailable, the dataset uses context bullets derived from company and financial facts.
-
-## Raw normalized schema
-
-Each ticker is stored as one JSON file under `data/raw/{ticker}.json` using this schema:
-
-```json
-{
-  "ticker": "...",
-  "company_name": "...",
-  "metrics": {
-    "revenue_growth": "...",
-    "operating_margin_trend": "...",
-    "free_cash_flow_trend": "...",
-    "segment_growth": {},
-    "valuation_note": "..."
-  },
-  "news": [],
-  "context": [],
-  "source_notes": {
-    "financials_source": "...",
-    "news_source": "..."
-  }
-}
-```
-
-Rules:
-
-- no invented hard numbers
-- unavailable metrics must be set to `"unknown"`
-- facts should remain traceable to the source notes and raw disclosures
-
-## Instruction-tuning dataset schema
-
-Each JSONL row contains:
+Each row contains:
 
 - `instruction`
 - `input`
 - `output`
 
-The instruction is always:
-
-```text
-Write a hedge-fund style stock memo.
-```
-
-The generated `output` always contains these exact sections in this order:
+The target output always uses this section order:
 
 - `Business Overview:`
 - `Bullish Thesis:`
@@ -86,77 +46,44 @@ The generated `output` always contains these exact sections in this order:
 - `Key Risks:`
 - `Conclusion:`
 
-The build script creates exactly **3 examples per ticker**:
+## Training
 
-- Example A: growth / upside angle
-- Example B: margin / efficiency angle
-- Example C: risk / valuation angle
+The main training entrypoint is:
 
-## Files
+- `train/qlora_train.py`
 
-- `scripts/fetch_ticker_data.py` — reads `tickers.txt` and writes normalized raw JSON files into `data/raw/`
-- `scripts/build_jsonl.py` — reads raw JSON files and generates:
-  - `data/processed/all_examples.jsonl`
-  - `data/processed/train.jsonl`
-  - `data/processed/eval.jsonl`
-- `scripts/validate_jsonl.py` — validates JSONL structure and required memo sections
+It is designed around the Unsloth QLoRA workflow and uses the local JSONL files in `data/processed/`.
 
-## How to rebuild the dataset
-
-Run all commands from inside `fine-tuning-reranker-finance/`.
-
-1. Put one ticker per line in `tickers.txt`
-2. Optionally export an Alpha Vantage key:
+### Example
 
 ```bash
-export ALPHA_VANTAGE_API_KEY=your_key_here
+python train/qlora_train.py \
+  --model-name unsloth/Llama-3.2-3B-Instruct-bnb-4bit \
+  --train-file data/processed/train.jsonl \
+  --eval-file data/processed/eval.jsonl \
+  --output-dir artifacts/qlora-memo \
+  --batch-size 2 \
+  --gradient-accumulation-steps 4 \
+  --epochs 3
 ```
 
-3. Fetch raw data:
+### Optional exports
+
+You can also request additional saves:
+
+- `--save-merged-16bit`
+- `--save-gguf`
+
+## Install
 
 ```bash
-python3 scripts/fetch_ticker_data.py
+pip install -r requirements.txt
 ```
 
-4. Build JSONL files:
+If you are on Apple Silicon, some GPU-oriented packages may need adjustment depending on your local stack. The script is primarily aimed at CUDA environments typically used for QLoRA fine-tuning.
 
-```bash
-python3 scripts/build_jsonl.py
-```
+## Notes
 
-5. Validate outputs:
-
-```bash
-python3 scripts/validate_jsonl.py
-```
-
-## Current dataset status
-
-The current `tickers.txt` contains 10 symbols:
-
-- AMZN
-- MSFT
-- GOOGL
-- META
-- NVDA
-- AMD
-- AVGO
-- AAPL
-- NFLX
-- COIN
-
-Current output counts:
-
-- Tickers processed: 10
-- Raw files created: 10
-- Total examples: 30
-- Train examples: 25
-- Eval examples: 5
-
-Current limitations:
-
-- Alpha Vantage is now configured and `valuation_note` is populated from Alpha Vantage overview fields for all current tickers
-- no approved structured news source is configured, so `news` is empty and `context` is derived from SEC and Alpha Vantage business facts
-- `segment_growth` is currently `unknown` for these tickers based on the available extraction logic and companyfacts fields
-
-These counts rebuild deterministically from the raw files currently present. If the raw inputs change, the deterministic train/eval split may also change because it is hash-based on example content.
+- the current dataset is small, so overfitting is a real risk
+- keep prompts grounded in the provided facts
+- do not use the fine-tuned model for unsupported financial claims
