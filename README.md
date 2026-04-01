@@ -117,13 +117,13 @@ This is still a real fine-tuning run, but it is intentionally small and mainly m
 
 Example smoke-test output:
 
-<img src="./runs/smoke-test.png" alt="Smoke test training output" width="900" />
+![Smoke test training output](runs/smoke-test.png)
 
 [Open the full-size smoke-test screenshot](./runs/smoke-test.png)
 
 Example inference-test output:
 
-<img src="./runs/inference-run-test.png" alt="Inference test output" width="900" />
+![Inference test output](runs/inference-run-test.png)
 
 [Open the full-size inference-test screenshot](./runs/inference-run-test.png)
 
