@@ -120,6 +120,12 @@ Before training, validate that the generated JSONL files are well-formed and con
 uv run python scripts/validate_jsonl.py
 ```
 
+If you want to normalize JSON document formatting (pretty-print with stable indentation):
+
+```bash
+uv run python scripts/format_json_documents.py
+```
+
 ### 5. Run a smoke-test fine-tune
 
 The main training entrypoint is `train/qlora_train.py`. It fine-tunes a causal language model on the processed JSONL files.

@@ -21,6 +21,9 @@ if ! command -v uv >/dev/null 2>&1; then
   exit 1
 fi
 
+# Keep uv cache local to the repo by default.
+export UV_CACHE_DIR="${UV_CACHE_DIR:-.uv-cache}"
+
 if [ "$SKIP_SYNC" = false ]; then
   echo "==> Syncing dependencies"
   uv sync --group dev
