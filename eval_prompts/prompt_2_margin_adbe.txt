@@ -1,0 +1,8 @@
+Ticker: ADBE
+
+Facts:
+- Revenue growth is positive but no longer accelerating.
+- Operating margin trend has improved.
+- Free cash flow remains strong.
+- Valuation is not obviously cheap.
+- Key risk is weaker enterprise software spending and competitive AI tooling pressure.

@@ -1,0 +1,8 @@
+Ticker: XYZ
+
+Facts:
+- Revenue trend is unclear from the available data.
+- Margin trajectory is uncertain.
+- Free cash flow visibility is limited.
+- Valuation context is incomplete.
+- Key risk is that the available evidence is too thin to support a strong investment view.

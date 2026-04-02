@@ -1,0 +1,8 @@
+Ticker: INTC
+
+Facts:
+- Revenue growth has been uneven.
+- Margin profile has been under pressure.
+- Large capital investment requirements remain.
+- Valuation looks less demanding than high-growth semiconductor peers.
+- Key risk is execution slippage in manufacturing and product roadmap delays.

@@ -1,0 +1,8 @@
+Ticker: TSLA
+
+Facts:
+- Revenue growth has slowed versus earlier periods.
+- Automotive gross margin has compressed.
+- The company still has scale advantages and strong brand recognition.
+- Valuation remains difficult to justify on traditional auto peer comparisons.
+- Key risk is weaker EV demand, pricing pressure, and execution on newer initiatives.

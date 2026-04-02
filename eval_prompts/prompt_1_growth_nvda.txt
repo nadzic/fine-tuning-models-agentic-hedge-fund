@@ -1,0 +1,8 @@
+Ticker: NVDA
+
+Facts:
+- Revenue growth remains strong.
+- AI demand is driving datacenter strength.
+- Gross margins remain healthy.
+- Valuation is elevated versus historical averages.
+- Key risk is slower enterprise spending or GPU demand normalization.
