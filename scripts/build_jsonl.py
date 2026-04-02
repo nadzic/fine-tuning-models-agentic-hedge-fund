@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import TypeAlias
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
@@ -20,7 +20,20 @@ REQUIRED_SECTIONS = [
 ]
 
 
-def safe_text(value: Any, fallback: str = "unknown") -> str:
+JsonObject: TypeAlias = dict[str, object]
+
+
+def as_dict(value: object) -> JsonObject:
+    return value if isinstance(value, dict) else {}
+
+
+def as_str_list(value: object) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [str(item) for item in value if isinstance(item, str)]
+
+
+def safe_text(value: object, fallback: str = "unknown") -> str:
     if value is None:
         return fallback
     if isinstance(value, str):
@@ -31,7 +44,7 @@ def safe_text(value: Any, fallback: str = "unknown") -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True)
 
 
-def bullet_list(items: List[str], fallback: str) -> List[str]:
+def bullet_list(items: list[str], fallback: str) -> list[str]:
     cleaned = []
     for item in items:
         text = safe_text(item, fallback="").strip()
@@ -40,7 +53,7 @@ def bullet_list(items: List[str], fallback: str) -> List[str]:
     return cleaned if cleaned else [fallback]
 
 
-def format_segment_growth(segment_growth: Any) -> List[str]:
+def format_segment_growth(segment_growth: object) -> list[str]:
     if not isinstance(segment_growth, dict) or not segment_growth:
         return ["Segment growth details: unknown"]
     lines = []
@@ -50,10 +63,10 @@ def format_segment_growth(segment_growth: Any) -> List[str]:
     return lines
 
 
-def build_input(record: Dict[str, Any], angle: str) -> str:
+def build_input(record: JsonObject, angle: str) -> str:
     ticker = safe_text(record.get("ticker"))
     company = safe_text(record.get("company_name"))
-    metrics = record.get("metrics") or {}
+    metrics = as_dict(record.get("metrics"))
 
     metric_lines = [
         f"Revenue growth: {safe_text(metrics.get('revenue_growth'))}",
@@ -64,8 +77,14 @@ def build_input(record: Dict[str, Any], angle: str) -> str:
     ]
     metric_lines.extend(format_segment_growth(metrics.get("segment_growth")))
 
-    news_items = bullet_list(record.get("news") or [], "No recent news items available; rely on company and financial context.")
-    context_items = bullet_list(record.get("context") or [], "Limited context available from structured company and financial disclosures.")
+    news_items = bullet_list(
+        as_str_list(record.get("news")),
+        "No recent news items available; rely on company and financial context.",
+    )
+    context_items = bullet_list(
+        as_str_list(record.get("context")),
+        "Limited context available from structured company and financial disclosures.",
+    )
 
     return "\n".join(
         [
@@ -85,7 +104,7 @@ def memo_section(section: str, body: str) -> str:
     return f"{section}\n{body.strip()}"
 
 
-def first_meaningful(items: List[str], fallback: str) -> str:
+def first_meaningful(items: list[str], fallback: str) -> str:
     for item in items:
         text = safe_text(item, fallback="").strip()
         if text and not text.lower().startswith("no recent news items available"):
@@ -93,8 +112,11 @@ def first_meaningful(items: List[str], fallback: str) -> str:
     return fallback
 
 
-def compress_context(record: Dict[str, Any]) -> Dict[str, str]:
-    context_items = bullet_list(record.get("context") or [], "Limited context available from structured company and financial disclosures.")
+def compress_context(record: JsonObject) -> dict[str, str]:
+    context_items = bullet_list(
+        as_str_list(record.get("context")),
+        "Limited context available from structured company and financial disclosures.",
+    )
     summary = first_meaningful(context_items, "Limited context available from structured company and financial disclosures.")
     sector = "unknown"
     industry = "unknown"
@@ -110,10 +132,10 @@ def compress_context(record: Dict[str, Any]) -> Dict[str, str]:
     }
 
 
-def build_output(record: Dict[str, Any], angle_key: str) -> str:
+def build_output(record: JsonObject, angle_key: str) -> str:
     ticker = safe_text(record.get("ticker"))
     company = safe_text(record.get("company_name"))
-    metrics = record.get("metrics") or {}
+    metrics = as_dict(record.get("metrics"))
     revenue_growth = safe_text(metrics.get("revenue_growth"))
     operating_margin_trend = safe_text(metrics.get("operating_margin_trend"))
     free_cash_flow_trend = safe_text(metrics.get("free_cash_flow_trend"))
@@ -197,7 +219,7 @@ def build_output(record: Dict[str, Any], angle_key: str) -> str:
     )
 
 
-def example_specs() -> List[Tuple[str, str]]:
+def example_specs() -> list[tuple[str, str]]:
     return [
         ("growth", "growth / upside angle"),
         ("margin", "margin / efficiency angle"),
@@ -205,27 +227,28 @@ def example_specs() -> List[Tuple[str, str]]:
     ]
 
 
-def deterministic_eval(example: Dict[str, Any], ratio: float = 0.2) -> bool:
+def deterministic_eval(example: dict[str, str], ratio: float = 0.2) -> bool:
     key = example["input"] + "\n" + example["output"]
     digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
     bucket = int(digest[:8], 16) / 0xFFFFFFFF
     return bucket < ratio
 
 
-def load_records() -> List[Dict[str, Any]]:
-    records: List[Dict[str, Any]] = []
+def load_records() -> list[JsonObject]:
+    records: list[JsonObject] = []
     if not RAW_DIR.exists():
         return records
     for path in sorted(RAW_DIR.glob("*.json")):
         with path.open("r", encoding="utf-8") as f:
             record = json.load(f)
-        records.append(record)
+        if isinstance(record, dict):
+            records.append(record)
     return records
 
 
-def generate_examples(records: List[Dict[str, Any]]) -> Tuple[List[Dict[str, str]], List[str]]:
-    examples: List[Dict[str, str]] = []
-    missing_notes: List[str] = []
+def generate_examples(records: list[JsonObject]) -> tuple[list[dict[str, str]], list[str]]:
+    examples: list[dict[str, str]] = []
+    missing_notes: list[str] = []
 
     for record in records:
         ticker = safe_text(record.get("ticker"))
@@ -233,7 +256,7 @@ def generate_examples(records: List[Dict[str, Any]]) -> Tuple[List[Dict[str, str
         if company == "unknown":
             missing_notes.append(f"{ticker}: company_name missing")
 
-        metrics = record.get("metrics") or {}
+        metrics = as_dict(record.get("metrics"))
         for field in ["revenue_growth", "operating_margin_trend", "free_cash_flow_trend", "valuation_note"]:
             if safe_text(metrics.get(field)) == "unknown":
                 missing_notes.append(f"{ticker}: {field} unknown")
@@ -256,7 +279,7 @@ def generate_examples(records: List[Dict[str, Any]]) -> Tuple[List[Dict[str, str
     return examples, missing_notes
 
 
-def write_jsonl(path: Path, rows: List[Dict[str, str]]) -> None:
+def write_jsonl(path: Path, rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
         for row in rows:
@@ -268,8 +291,8 @@ def main() -> None:
     records = load_records()
     examples, missing_notes = generate_examples(records)
 
-    train_rows: List[Dict[str, str]] = []
-    eval_rows: List[Dict[str, str]] = []
+    train_rows: list[dict[str, str]] = []
+    eval_rows: list[dict[str, str]] = []
     for row in examples:
         if deterministic_eval(row):
             eval_rows.append(row)

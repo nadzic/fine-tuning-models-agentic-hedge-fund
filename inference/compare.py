@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from typing import Any
 
 import torch
 from unsloth import FastLanguageModel
@@ -136,17 +135,23 @@ def generate_response(
         return_tensors="pt",
     ).to(model.device)
 
-    generate_kwargs: dict[str, Any] = {
-        "max_new_tokens": max_new_tokens,
-        "do_sample": do_sample,
-        "use_cache": True,
-    }
-    if do_sample:
-        generate_kwargs["temperature"] = temperature
-        generate_kwargs["top_p"] = top_p
-
     with torch.inference_mode():
-        outputs = model.generate(**inputs, **generate_kwargs)
+        if do_sample:
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                do_sample=True,
+                temperature=temperature,
+                top_p=top_p,
+                use_cache=True,
+            )
+        else:
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                use_cache=True,
+            )
 
     generated_ids = outputs[0][inputs["input_ids"].shape[1]:]
     response = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
