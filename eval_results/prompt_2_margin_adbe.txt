@@ -1,0 +1,59 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken. Using Xformers instead. No performance changes will be seen.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+=== Prompt ===
+
+Ticker: ADBE
+
+Facts:
+- Revenue growth is positive but no longer accelerating.
+- Operating margin trend has improved.
+- Free cash flow remains strong.
+- Valuation is not obviously cheap.
+- Key risk is weaker enterprise software spending and competitive AI tooling pressure.
+
+=== Base model output ===
+
+**MEMO: Adobe Systems Inc. (ADBE)**
+
+**Thesis**
+Adobe Systems continues to demonstrate operational stability with positive revenue growth and robust free cash flow generation. However, the growth trajectory has decelerated, and the current valuation does not appear to offer a significant discount to historical norms.
+
+**Financial Overview**
+*   **Revenue Growth:** Positive but no longer accelerating.
+*   **Operating Margins:** Trend has improved.
+*   **Free Cash Flow:** Remains strong.
+
+**Valuation**
+The stock trades at a premium; valuation is not obviously cheap.
+
+**Risks**
+*   **Enterprise Software Spending:** Potential for continued weakness in the broader enterprise software sector.
+*   **Competitive Pressure:** Intensifying competition from AI-driven tooling.
+
+=== Fine-tuned output ===
+
+Business Overview:
+Adobe Inc. (ADBE) operates primarily in enterprise software, with cloud-based creative and document solutions as the core business. The company has been shifting toward a subscription model, which supports recurring revenue and better cash conversion. Recent financials show revenue growth that is positive but no longer accelerating, while operating margin trend has improved. Free cash flow remains strong, and valuation is not obviously cheap.
+
+Bullish Thesis:
+The main bullish angle is that the business still delivers solid top-line growth and improving operating leverage. If enterprise software spending continues to hold up and the company can maintain its conversion profile, that supports a case for continued execution.
+
+Bearish Thesis:
+The primary risks are weaker enterprise software spending and competitive AI tooling pressure. If demand slows or the competitive landscape shifts, the company’s ability to translate revenue into margin expansion could be constrained.
+
+Conclusion:
+Overall, the setup is mixed: the business shows evidence of execution and cash generation, but the valuation and sector headwinds limit the case for a more aggressive stance.
