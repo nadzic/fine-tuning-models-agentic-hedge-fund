@@ -1,32 +1,98 @@
 # Fine-Tuning Financial Memo Models
 
-This repo contains two related pieces:
+This repo is an end-to-end workflow for building a small financial memo dataset, fine-tuning a QLoRA adapter, and comparing the resulting model against the base model.
 
-1. a reproducible dataset pipeline for hedge-fund style stock memo instruction tuning
-2. a QLoRA training script for fine-tuning a financial memo generation model on that dataset
+At a high level, the flow is:
 
-## Folder structure
+1. fetch raw company facts into `data/raw/`
+2. turn those facts into instruction-tuning JSONL files in `data/processed/`
+3. validate the generated dataset
+4. run a smoke-test or full QLoRA training job
+5. load the saved adapter for inference
+6. compare base-model vs fine-tuned outputs on the same prompt
+
+## Repo layout
 
 ```text
 fine-tuning-models-agentic-hedge-fund/
 ├── data/
 │   ├── raw/
 │   └── processed/
+├── eval_prompts/
 ├── inference/
-│   └── compare.py
-├── train/
-│   └── qlora_train.py
+│   ├── compare.py
+│   └── inference_test.py
+├── runs/
 ├── scripts/
 │   ├── build_jsonl.py
 │   ├── fetch_ticker_data.py
 │   └── validate_jsonl.py
-├── requirements.txt
+├── smoke_test_running/
+├── train/
+│   └── qlora_train.py
+├── tickers.txt
+├── pyproject.toml
+├── run_ci_checks.sh
 └── README.md
 ```
 
-## Dataset
+## Install
 
-Processed instruction-tuning files live in:
+The easiest setup uses `uv`:
+
+```bash
+uv sync --group dev
+```
+
+If you prefer `pip`, you can still do:
+
+```bash
+pip install -r requirements.txt
+```
+
+If you are on Apple Silicon, some GPU-oriented packages may need adjustment depending on your local stack. The training script is primarily aimed at CUDA environments, so local Mac runs should be treated as smoke tests unless you have a compatible setup.
+
+## End-to-End Flow
+
+### 1. Choose tickers
+
+Put one ticker per line in `tickers.txt`.
+
+Example:
+
+```text
+NVDA
+MSFT
+ADBE
+INTC
+TSLA
+```
+
+### 2. Fetch raw company data
+
+This script reads `tickers.txt`, pulls company facts, and writes one JSON file per ticker into `data/raw/`.
+
+```bash
+uv run python scripts/fetch_ticker_data.py
+```
+
+The raw records contain fields such as:
+
+- `ticker`
+- `company_name`
+- `metrics`
+- `context`
+- `source_notes`
+
+### 3. Build the instruction-tuning dataset
+
+This script converts the raw records into JSONL training examples.
+
+```bash
+uv run python scripts/build_jsonl.py
+```
+
+It writes:
 
 - `data/processed/all_examples.jsonl`
 - `data/processed/train.jsonl`
@@ -46,36 +112,25 @@ The target output always uses this section order:
 - `Key Risks:`
 - `Conclusion:`
 
-## Training
+### 4. Validate the dataset
 
-The main training entrypoint is:
-
-- `train/qlora_train.py`
-
-It is designed around the Unsloth QLoRA workflow and uses the local JSONL files in `data/processed/` to fine-tune a causal language model for memo-style financial analysis.
-
-### Example
+Before training, validate that the generated JSONL files are well-formed and contain the required sections.
 
 ```bash
-python train/qlora_train.py \
+uv run python scripts/validate_jsonl.py
+```
+
+### 5. Run a smoke-test fine-tune
+
+The main training entrypoint is `train/qlora_train.py`. It fine-tunes a causal language model on the processed JSONL files.
+
+For a quick local smoke test:
+
+```bash
+uv run python train/qlora_train.py \
   --model-name unsloth/Qwen3.5-4B \
   --train-file data/processed/train.jsonl \
   --eval-file data/processed/eval.jsonl \
-  --output-dir artifacts/qlora-memo \
-  --batch-size 2 \
-  --gradient-accumulation-steps 4 \
-  --epochs 3
-```
-
-The training script now formats prompts via the tokenizer chat template when available, which makes it safer to switch between chat-tuned model families such as Qwen and Llama without hardcoding model-specific special tokens.
-
-### Local smoke test
-
-For a quick local check with smaller memory requirements, start with a short run like this:
-
-```bash
-python train/qlora_train.py \
-  --model-name unsloth/Qwen3.5-4B \
   --output-dir artifacts/qwen35-test \
   --batch-size 1 \
   --eval-batch-size 1 \
@@ -86,9 +141,9 @@ python train/qlora_train.py \
 
 If your local environment struggles with 4-bit loading, you can also try `--no-load-in-4bit`, but that will increase memory usage.
 
-### RunPod smoke test
+### 6. Run a smoke-test on RunPod
 
-On RunPod or similar remote GPU environments, it can help to redirect Hugging Face and temporary caches into `/workspace` so model downloads do not fill the root filesystem:
+On RunPod or similar remote GPU environments, it helps to redirect Hugging Face and temporary caches into `/workspace` so downloads do not fill the root filesystem.
 
 ```bash
 HF_HOME=/workspace/.cache/huggingface \
@@ -113,7 +168,13 @@ uv run python train/qlora_train.py \
   --eval-steps 1000
 ```
 
-This is still a real fine-tuning run, but it is intentionally small and mainly meant to confirm that the full training pipeline works end to end.
+This is still a real fine-tuning run, but it is intentionally small and mainly meant to confirm that the full pipeline works end to end.
+
+The training output is saved into the folder passed via `--output-dir`. In a smoke test this is typically:
+
+- `artifacts/smoke-run/`
+
+That folder contains the adapter weights, adapter config, tokenizer files, and `metrics.json`.
 
 Example smoke-test output:
 
@@ -121,29 +182,146 @@ Example smoke-test output:
 
 [Open the full-size smoke-test screenshot](./runs/smoke-test.png)
 
+## Inference and Comparison
+
+### Single-model inference
+
+Use `inference/inference_test.py` to load the saved adapter and generate one memo from either inline input text or a prompt file.
+
+Example:
+
+```bash
+uv run python inference/inference_test.py \
+  --adapter-path artifacts/smoke-run \
+  --prompt-file eval_prompts/prompt_1_growth_nvda.txt
+```
+
+### Base vs fine-tuned comparison
+
+Use `inference/compare.py` to run the same prompt through:
+
+1. the base model
+2. the fine-tuned adapter
+
+Example:
+
+```bash
+uv run python inference/compare.py \
+  --adapter-path artifacts/smoke-run \
+  --prompt-file eval_prompts/prompt_1_growth_nvda.txt
+```
+
+This prints:
+
+- `=== Prompt ===`
+- `=== Base model output ===`
+- `=== Fine-tuned output ===`
+
+By default, comparison is deterministic to make the difference easier to judge. You can enable sampling with:
+
+```bash
+uv run python inference/compare.py \
+  --adapter-path artifacts/smoke-run \
+  --prompt-file eval_prompts/prompt_1_growth_nvda.txt \
+  --do-sample \
+  --temperature 0.7 \
+  --top-p 0.9
+```
+
+### RunPod evaluation workflow
+
+If you are testing multiple prompts on RunPod, it is convenient to set the cache-related environment variables once per shell and then use shorter commands.
+
+Set these once:
+
+```bash
+export HF_HOME=/workspace/.cache/huggingface
+export HF_HUB_CACHE=/workspace/.cache/huggingface/hub
+export TRANSFORMERS_CACHE=/workspace/.cache/huggingface/transformers
+export XDG_CACHE_HOME=/workspace/.cache
+export TMPDIR=/workspace/tmp
+export TRITON_CACHE_DIR=/workspace/.cache/triton
+export HF_HUB_DISABLE_XET=1
+```
+
+Then run comparisons with shorter commands, for example:
+
+```bash
+.venv/bin/python inference/compare.py --adapter-path artifacts/smoke-run --prompt-file eval_prompts/prompt_1_growth_nvda.txt
+```
+
+To save the output for later analysis:
+
+```bash
+mkdir -p eval_results
+.venv/bin/python inference/compare.py --adapter-path artifacts/smoke-run --prompt-file eval_prompts/prompt_1_growth_nvda.txt > eval_results/prompt_1_growth_nvda.txt
+```
+
+To both display and save the output:
+
+```bash
+mkdir -p eval_results
+.venv/bin/python inference/compare.py --adapter-path artifacts/smoke-run --prompt-file eval_prompts/prompt_1_growth_nvda.txt | tee eval_results/prompt_1_growth_nvda.txt
+```
+
+To run all prompts in `eval_prompts/` and save each result into `eval_results/`:
+
+```bash
+mkdir -p eval_results
+for f in eval_prompts/*.txt; do
+  name=$(basename "$f")
+  .venv/bin/python inference/compare.py --adapter-path artifacts/smoke-run --prompt-file "$f" | tee "eval_results/$name"
+done
+```
+
 Example inference-test output:
 
 ![Inference test output](runs/inference-run-test.png)
 
 [Open the full-size inference-test screenshot](./runs/inference-run-test.png)
 
-### Optional exports
+## Full Training
 
-You can also request additional saves:
+Once the smoke test works and the dataset looks good, you can run a larger training job.
+
+Example:
+
+```bash
+uv run python train/qlora_train.py \
+  --model-name unsloth/Qwen3.5-4B \
+  --train-file data/processed/train.jsonl \
+  --eval-file data/processed/eval.jsonl \
+  --output-dir artifacts/qlora-memo \
+  --batch-size 2 \
+  --gradient-accumulation-steps 4 \
+  --epochs 3
+```
+
+The training script formats prompts via the tokenizer chat template when available, which makes it safer to switch between chat-tuned model families such as Qwen and Llama without hardcoding model-specific special tokens.
+
+Optional exports:
 
 - `--save-merged-16bit`
 - `--save-gguf`
 
-## Install
+## CI and Local Checks
+
+To run the same checks locally that the Python CI job runs:
 
 ```bash
-pip install -r requirements.txt
+bash run_ci_checks.sh
 ```
 
-If you are on Apple Silicon, some GPU-oriented packages may need adjustment depending on your local stack. The script is primarily aimed at CUDA environments typically used for QLoRA fine-tuning, so treat local Mac runs as smoke tests unless you have a compatible setup.
+This runs:
+
+- `ruff`
+- `basedpyright`
+- `pytest` if a `tests/` directory exists
+- `compileall` over the repo's Python directories
 
 ## Notes
 
-- the current dataset is small, so overfitting is a real risk
+- the current dataset is still small, so overfitting is a real risk
+- the repo is currently strongest as a proof of concept and workflow demo
 - keep prompts grounded in the provided facts
 - do not use the fine-tuned model for unsupported financial claims
