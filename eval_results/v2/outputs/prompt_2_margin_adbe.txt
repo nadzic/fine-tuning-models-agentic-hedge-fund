@@ -1,0 +1,65 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken. Using Xformers instead. No performance changes will be seen.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+=== Prompt ===
+
+Ticker: ADBE
+
+Facts:
+- Revenue growth is positive but no longer accelerating.
+- Operating margin trend has improved.
+- Free cash flow remains strong.
+- Valuation is not obviously cheap.
+- Key risk is weaker enterprise software spending and competitive AI tooling pressure.
+
+=== Base model output ===
+
+**MEMO: Adobe Systems Inc. (ADBE)**
+
+**Thesis**
+Adobe Systems continues to demonstrate operational stability with positive revenue growth and robust free cash flow generation. However, the growth trajectory has decelerated, and the current valuation does not appear to offer a significant discount to historical norms.
+
+**Financial Overview**
+*   **Revenue Growth:** Positive but no longer accelerating.
+*   **Operating Margins:** Trend has improved.
+*   **Free Cash Flow:** Remains strong.
+
+**Valuation**
+The stock trades at a premium; valuation is not obviously cheap.
+
+**Risks**
+*   **Enterprise Software Spending:** Potential for continued weakness in the broader enterprise software sector.
+*   **Competitive Pressure:** Intensifying competition from AI-driven tooling.
+
+=== Fine-tuned output ===
+
+Business Overview:
+Based on the provided facts, the company shows positive revenue growth that is no longer accelerating, improved operating margin trend, strong free cash flow, and valuation that is not obviously cheap.
+
+Bullish Thesis:
+The bullish case is that revenue growth is positive, operating margin trend has improved, and free cash flow remains strong, which together support a more stable operating profile.
+
+Bearish Thesis:
+The bearish case is that revenue growth is no longer accelerating, valuation is not obviously cheap, and the key risks are weaker enterprise software spending and competitive AI tooling pressure.
+
+Valuation Context:
+Valuation is not obviously cheap, so the setup does not appear particularly attractive on that basis alone.
+
+Conclusion:
+Overall, the evidence points to a company with improved operating discipline and cash generation, but the case is not compelling enough to be strongly bullish.
+
+Confidence:
+Medium
