@@ -1,0 +1,105 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken. Using Xformers instead. No performance changes will be seen.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+=== Prompt ===
+
+Ticker: AVGO
+Company: Broadcom Inc.
+Metrics:
+- Revenue growth: decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3)
+- Operating margin trend: decreasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1)
+- Free cash flow trend: increasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1)
+- Valuation note: PERatio reported by Alpha Vantage: 60.22; EVToRevenue reported by Alpha Vantage: 27.54; MarketCapitalization reported by Alpha Vantage: 1467471626000
+- Angle emphasis: risk / valuation angle
+- Segment growth details: unknown
+News:
+- No recent news items available; rely on company and financial context.
+Context:
+- Broadcom Inc. is an American designer, developer, manufacturer and global supplier of a wide range of semiconductor and infrastructure software products. Broadcom's product offerings serve the data center, networking, software, broadband, wireless, and storage and industrial markets.
+- Sector: TECHNOLOGY
+- Industry: SEMICONDUCTORS
+
+=== Base model output ===
+
+**MEMO: Broadcom Inc. (AVGO)**
+
+**Date:** October 26, 2023
+**Sector:** Technology / Semiconductors
+**Focus:** Risk / Valuation
+
+**Executive Summary**
+Broadcom Inc. (AVGO) presents a significant valuation risk profile amidst a decelerating revenue growth trajectory. While free cash flow remains robust, the widening gap between top-line expansion and operating leverage raises concerns regarding the sustainability of current margins.
+
+**Financial Performance Analysis**
+Recent SEC filings indicate a divergence in Broadcom's financial health across key metrics:
+*   **Revenue Growth:** Top-line growth is showing signs of deceleration. Data from recent reported periods (FY2018Q3) suggests a downward trend in revenue expansion.
+*   **Operating Margins:** There is a concerning trend of decreasing operating margins. Analysis of recent periods (FY2026Q1) indicates that profitability per dollar of revenue is under pressure.
+*   **Free Cash Flow:** Conversely, free cash flow generation remains strong, with an increasing trend observed in recent periods (FY2026Q1). This suggests the company is maintaining liquidity despite margin compression.
+
+**Valuation Assessment**
+The current market pricing appears detached from the underlying operational trends, presenting a high valuation risk.
+*   **P/E Ratio:** 60.22 (Source: Alpha Vantage)
+*   **EV/Revenue:** 27.54 (Source: Alpha Vantage)
+*   **Market Capitalization:** $1,467.47 Billion (Source: Alpha Vantage)
+
+At a P/E ratio of 60.22 and an EV/Revenue multiple of 27.54, the stock trades at a premium that assumes continued high organic growth and margin stability. Given the documented trends of decreasing revenue growth and operating margins, the current valuation lacks a corresponding catalyst to justify the risk premium.
+
+**Conclusion**
+The combination of slowing revenue growth, compressing operating margins, and an elevated multiple creates a precarious risk/valuation environment. While cash flow remains healthy, the lack of recent news items and the
+
+=== Fine-tuned output ===
+
+Business Overview:
+Broadcom Inc. (AVGO) operates in TECHNOLOGY, specifically SEMICONDUCTORS. The company is described as an American designer, developer, manufacturer and global supplier of a wide range of semiconductor and infrastructure software products, serving the data center, networking, software, broadband, wireless, and storage and industrial markets.
+
+Bullish Thesis:
+The bullish case rests primarily on valuation and cash-flow discipline. Valuation context is PERatio reported by Alpha Vantage: 60.22; EVToRevenue reported by Alpha Vantage: 27.54; MarketCapitalization reported by Alpha Vantage: 1467471626000. Operating leverage appears supported by Operating margin trend: decreasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1) and Free cash flow trend: increasing based on SEC companyfacts across recent reported periods (FY2026Q1, FY2026Q1). Revenue growth is decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3), so further revenue acceleration would be needed to meaningfully improve the risk profile.
+
+Bearish Thesis:
+The bearish case is that the setup is already priced for better execution. With PERatio reported by Alpha Vantage: 60.22; EVToRevenue reported by Alpha Vantage: 27.54; MarketCapitalization reported by Alpha Vantage: 1467471626000, the margin of safety is limited. If growth does not improve, the case weakens quickly.
+
+Key Risks:
+Key risks include execution failure, slower-than-expected growth, and any deterioration in the reported financial trends.
+
+
+=== STDERR ===
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   0%|▎                                                                                                                                                                                                                                                                  | 1/723 [00:00<01:14,  9.73it/s]
+Loading weights:   1%|██▏                                                                                                                                                                                                                                                                | 6/723 [00:00<00:30, 23.30it/s]
+Loading weights:   1%|███▏                                                                                                                                                                                                                                                               | 9/723 [00:00<00:44, 16.17it/s]
+Loading weights:   2%|████▎                                                                                                                                                                                                                                                             | 12/723 [00:00<00:38, 18.60it/s]
+Loading weights:   2%|████▉                                                                                                                                                                                                                                                             | 14/723 [00:00<00:41, 17.09it/s]
+Loading weights:   3%|███████▍                                                                                                                                                                                                                                                          | 21/723 [00:00<00:24, 28.17it/s]
+Loading weights:   3%|████████▉                                                                                                                                                                                                                                                         | 25/723 [00:01<00:28, 24.38it/s]
+Loading weights:   4%|█████████▉                                                                                                                                                                                                                                                        | 28/723 [00:01<00:30, 22.99it/s]
+Loading weights:   7%|██████████████████▏                                                                                                                                                                                                                                               | 51/723 [00:01<00:09, 67.40it/s]
+Loading weights:  47%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋                                                                                                                                       | 341/723 [00:01<00:00, 734.13it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 468.25it/s]
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   1%|██▏                                                                                                                                                                                                                                                                | 6/723 [00:00<00:21, 33.24it/s]
+Loading weights:   1%|███▌                                                                                                                                                                                                                                                              | 10/723 [00:00<00:34, 20.44it/s]
+Loading weights:   2%|████▋                                                                                                                                                                                                                                                             | 13/723 [00:00<00:37, 18.86it/s]
+Loading weights:   3%|███████▏                                                                                                                                                                                                                                                          | 20/723 [00:00<00:24, 28.35it/s]
+Loading weights:   3%|████████▌                                                                                                                                                                                                                                                         | 24/723 [00:01<00:31, 22.14it/s]
+Loading weights:   4%|█████████▋                                                                                                                                                                                                                                                        | 27/723 [00:01<00:36, 19.10it/s]
+Loading weights:   5%|████████████▏                                                                                                                                                                                                                                                     | 34/723 [00:01<00:26, 26.18it/s]
+Loading weights:   6%|████████████████                                                                                                                                                                                                                                                  | 45/723 [00:01<00:16, 42.33it/s]
+Loading weights:  10%|██████████████████████████▊                                                                                                                                                                                                                                       | 75/723 [00:01<00:06, 98.09it/s]
+Loading weights:  60%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋                                                                                                      | 434/723 [00:01<00:00, 922.61it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 413.95it/s]

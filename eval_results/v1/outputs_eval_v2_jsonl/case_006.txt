@@ -1,0 +1,110 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken. Using Xformers instead. No performance changes will be seen.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+=== Prompt ===
+
+Ticker: META
+Company: Meta Platforms, Inc.
+Metrics:
+- Revenue growth: decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3)
+- Operating margin trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Free cash flow trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Valuation note: PERatio reported by Alpha Vantage: 22.83; EVToRevenue reported by Alpha Vantage: 6.76; MarketCapitalization reported by Alpha Vantage: 1356802949000
+- Angle emphasis: growth / upside angle
+- Segment growth details: unknown
+News:
+- No recent news items available; rely on company and financial context.
+Context:
+- Meta Platforms, Inc. develops products that enable people to connect and share with friends and family through mobile devices, PCs, virtual reality headsets, wearables and home devices around the world. The company is headquartered in Menlo Park, California.
+- Sector: COMMUNICATION SERVICES
+- Industry: INTERNET CONTENT & INFORMATION
+
+=== Base model output ===
+
+**MEMO: META**
+
+**Date:** October 26, 2023
+**Ticker:** META
+**Sector:** Communication Services
+**Industry:** Internet Content & Information
+
+**Overview**
+Meta Platforms, Inc. develops products enabling global connectivity through mobile devices, PCs, virtual reality headsets, wearables, and home devices. Headquartered in Menlo Park, California, the company operates within the Communication Services sector.
+
+**Financial Performance**
+Recent SEC filings indicate a deterioration in key financial metrics across multiple periods:
+*   **Revenue Growth:** Decreasing based on SEC company facts for FY2018Q3.
+*   **Operating Margin:** Decreasing based on SEC company facts for FY2025Q3.
+*   **Free Cash Flow:** Decreasing based on SEC company facts for FY2025Q3.
+
+**Valuation**
+Current valuation multiples, as reported by Alpha Vantage, are as follows:
+*   **P/E Ratio:** 22.83
+*   **EV/Revenue:** 6.76
+*   **Market Capitalization:** $1,356.80 billion
+
+**Investment Angle**
+*   **Growth:** The memo focuses on the growth trajectory and upside potential of the company.
+*   **Segment Growth:** Specific segment growth details are currently unavailable.
+
+**News**
+No recent news items are available; analysis relies on the provided company and financial context.
+
+=== Fine-tuned output ===
+
+Business Overview:
+Meta Platforms, Inc. (META) operates in COMMUNICATION SERVICES, specifically INTERNET CONTENT & INFORMATION. The company develops products that enable people to connect and share with friends and family through mobile devices, PCs, virtual reality headsets, wearables and home devices around the world, and is headquartered in Menlo Park, California.
+
+Bullish Thesis:
+The bullish case centers on growth and upside potential. Revenue growth is decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3), operating margin trend is decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3), and free cash flow trend is decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3). Valuation context is PERatio reported by Alpha Vantage: 22.83; EVToRevenue reported by Alpha Vantage: 6.76; MarketCapitalization reported by Alpha Vantage: 1356802949000. The segment growth detail is unknown.
+
+Bearish Thesis:
+The bearish case emphasizes valuation and execution risks. The reported valuation is PERatio reported by Alpha Vantage: 22.83; EVToRevenue reported by Alpha Vantage: 6.76; MarketCapitalization reported by Alpha Vantage: 1356802949000. Revenue growth is decreasing based on SEC companyfacts across recent reported periods (FY2018Q3, FY2018Q3), operating margin trend is decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3), and free cash flow trend is decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3). The segment growth detail is unknown.
+
+Key Risks:
+Key risks include execution against the stated growth and upside angle, broader sector headwinds in COMMUNICATION SERVICES, and
+
+
+=== STDERR ===
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   0%|▋                                                                                                                                                                                                                                                                  | 2/723 [00:00<00:36, 19.99it/s]
+Loading weights:   1%|██▏                                                                                                                                                                                                                                                                | 6/723 [00:00<00:26, 27.20it/s]
+Loading weights:   1%|███▏                                                                                                                                                                                                                                                               | 9/723 [00:00<00:40, 17.73it/s]
+Loading weights:   2%|████▎                                                                                                                                                                                                                                                             | 12/723 [00:00<00:35, 20.07it/s]
+Loading weights:   2%|█████▎                                                                                                                                                                                                                                                            | 15/723 [00:00<00:34, 20.37it/s]
+Loading weights:   3%|███████▏                                                                                                                                                                                                                                                          | 20/723 [00:00<00:25, 27.14it/s]
+Loading weights:   3%|████████▏                                                                                                                                                                                                                                                         | 23/723 [00:01<00:34, 20.40it/s]
+Loading weights:   4%|█████████▎                                                                                                                                                                                                                                                        | 26/723 [00:01<00:34, 20.11it/s]
+Loading weights:   4%|██████████▎                                                                                                                                                                                                                                                       | 29/723 [00:01<00:35, 19.58it/s]
+Loading weights:   5%|████████████▊                                                                                                                                                                                                                                                     | 36/723 [00:01<00:26, 25.73it/s]
+Loading weights:   7%|██████████████████▉                                                                                                                                                                                                                                               | 53/723 [00:01<00:12, 54.98it/s]
+Loading weights:  20%|████████████████████████████████████████████████████▍                                                                                                                                                                                                           | 148/723 [00:01<00:02, 256.88it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 383.47it/s]
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   1%|██▏                                                                                                                                                                                                                                                                | 6/723 [00:00<00:20, 34.64it/s]
+Loading weights:   1%|███▌                                                                                                                                                                                                                                                              | 10/723 [00:00<00:31, 22.28it/s]
+Loading weights:   2%|████▋                                                                                                                                                                                                                                                             | 13/723 [00:00<00:41, 17.20it/s]
+Loading weights:   2%|█████▎                                                                                                                                                                                                                                                            | 15/723 [00:00<00:41, 17.20it/s]
+Loading weights:   3%|███████▍                                                                                                                                                                                                                                                          | 21/723 [00:00<00:27, 25.79it/s]
+Loading weights:   3%|████████▌                                                                                                                                                                                                                                                         | 24/723 [00:01<00:30, 23.22it/s]
+Loading weights:   4%|█████████▋                                                                                                                                                                                                                                                        | 27/723 [00:01<00:35, 19.49it/s]
+Loading weights:   5%|████████████▏                                                                                                                                                                                                                                                     | 34/723 [00:01<00:24, 27.57it/s]
+Loading weights:   7%|████████████████▊                                                                                                                                                                                                                                                 | 47/723 [00:01<00:13, 48.32it/s]
+Loading weights:  29%|██████████████████████████████████████████████████████████████████████████                                                                                                                                                                                      | 209/723 [00:01<00:01, 408.57it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 420.38it/s]

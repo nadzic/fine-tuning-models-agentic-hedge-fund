@@ -1,0 +1,111 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken. Using Xformers instead. No performance changes will be seen.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+=== Prompt ===
+
+Ticker: NFLX
+Company: NETFLIX INC
+Metrics:
+- Revenue growth: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Operating margin trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Free cash flow trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Valuation note: PERatio reported by Alpha Vantage: 36.75; EVToRevenue reported by Alpha Vantage: 8.7; MarketCapitalization reported by Alpha Vantage: 394368483000
+- Angle emphasis: margin / efficiency angle
+- Segment growth details: unknown
+News:
+- No recent news items available; rely on company and financial context.
+Context:
+- Netflix, Inc. is an American over-the-top content platform and production company headquartered in Los Gatos, California. Netflix was founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. The company's primary business is a subscription-based streaming service offering online streaming from a library of films and television series, including those produced in-house.
+- Sector: COMMUNICATION SERVICES
+- Industry: ENTERTAINMENT
+
+=== Base model output ===
+
+**MEMO: NETFLIX INC (NFLX)**
+
+**Date:** October 26, 2023
+**Ticker:** NFLX
+**Sector:** Communication Services
+**Industry:** Entertainment
+
+**Overview**
+Netflix, Inc. is an American over-the-top content platform and production company headquartered in Los Gatos, California. Founded in 1997 by Reed Hastings and Marc Randolph, the company operates a subscription-based streaming service offering online streaming from a library of films and television series, including those produced in-house.
+
+**Financial Performance: Margin and Efficiency Concerns**
+Based on SEC filings across recent reported periods (FY2025Q3), the company is experiencing a negative trend in key profitability and cash generation metrics. Specifically, revenue growth is decreasing. Concurrently, operating margins are showing a downward trajectory, indicating a compression in operational efficiency. This trend is further reflected in a decrease in free cash flow over the same reporting periods.
+
+**Valuation**
+Current valuation multiples, as reported by Alpha Vantage, reflect the following:
+*   **P/E Ratio:** 36.75
+*   **EV/Revenue:** 8.7
+*   **Market Capitalization:** $394.37 billion
+
+**Investment Angle**
+The primary focus for this analysis is the margin and efficiency angle. The simultaneous decline in revenue growth, operating margins, and free cash flow suggests that the company's current operational leverage is weakening. Investors should monitor whether these negative trends persist or if strategic adjustments can reverse the efficiency compression.
+
+**Segment Growth**
+No specific segment growth details are available in the provided data.
+
+**Recent News**
+No recent news items are available; analysis relies strictly on the provided company and financial context.
+
+=== Fine-tuned output ===
+
+Business Overview:
+NETFLIX INC operates in COMMUNICATION SERVICES, specifically ENTERTAINMENT. The company is described as an American over-the-top content platform and production company headquartered in Los Gatos, California, founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. Its primary business is a subscription-based streaming service offering online streaming from a library of films and television series, including those produced in-house.
+
+Bullish Case:
+The bullish angle centers on margin and efficiency dynamics. Reported financial context shows decreasing revenue growth based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3), decreasing operating margin trend based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3), and decreasing free cash flow trend based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3). Valuation context is PERatio reported by Alpha Vantage: 36.75; EVToRevenue reported by Alpha Vantage: 8.7; MarketCapitalization reported by Alpha Vantage: 394368483000. The setup suggests that if operating leverage can hold, the business can be more compelling than the headline numbers imply.
+
+Bearish Case:
+The bearish angle is that the same facts can work against the thesis. Decreasing revenue growth based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3), decreasing operating margin trend based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3), and decreasing free cash flow trend based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3) leave room for the narrative to be weaker than it appears. If execution slips or the business cannot sustain the reported trajectory, the case for a thesis-driven setup is limited.
+
+Key Risks:
+Key risks include execution around the reported operating context, company-specific developments that could alter the
+
+
+=== STDERR ===
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   0%|▎                                                                                                                                                                                                                                                                  | 1/723 [00:00<01:13,  9.84it/s]
+Loading weights:   1%|██▏                                                                                                                                                                                                                                                                | 6/723 [00:00<00:26, 27.09it/s]
+Loading weights:   1%|███▏                                                                                                                                                                                                                                                               | 9/723 [00:00<00:36, 19.41it/s]
+Loading weights:   2%|████▎                                                                                                                                                                                                                                                             | 12/723 [00:00<00:38, 18.46it/s]
+Loading weights:   2%|████▉                                                                                                                                                                                                                                                             | 14/723 [00:00<00:41, 17.13it/s]
+Loading weights:   3%|███████▍                                                                                                                                                                                                                                                          | 21/723 [00:00<00:27, 25.80it/s]
+Loading weights:   3%|████████▌                                                                                                                                                                                                                                                         | 24/723 [00:01<00:29, 23.57it/s]
+Loading weights:   4%|█████████▋                                                                                                                                                                                                                                                        | 27/723 [00:01<00:35, 19.84it/s]
+Loading weights:   5%|████████████▍                                                                                                                                                                                                                                                     | 35/723 [00:01<00:23, 29.74it/s]
+Loading weights:   5%|█████████████▉                                                                                                                                                                                                                                                    | 39/723 [00:01<00:21, 31.63it/s]
+Loading weights:   8%|█████████████████████                                                                                                                                                                                                                                             | 59/723 [00:01<00:09, 69.76it/s]
+Loading weights:  31%|██████████████████████████████████████████████████████████████████████████████▉                                                                                                                                                                                 | 223/723 [00:01<00:01, 455.90it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 394.66it/s]
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   0%|▋                                                                                                                                                                                                                                                                  | 2/723 [00:00<00:36, 19.91it/s]
+Loading weights:   1%|██▌                                                                                                                                                                                                                                                                | 7/723 [00:00<00:26, 26.77it/s]
+Loading weights:   1%|███▌                                                                                                                                                                                                                                                              | 10/723 [00:00<00:33, 21.07it/s]
+Loading weights:   2%|████▋                                                                                                                                                                                                                                                             | 13/723 [00:00<00:41, 17.05it/s]
+Loading weights:   3%|███████▏                                                                                                                                                                                                                                                          | 20/723 [00:00<00:26, 26.79it/s]
+Loading weights:   3%|████████▏                                                                                                                                                                                                                                                         | 23/723 [00:01<00:32, 21.44it/s]
+Loading weights:   4%|█████████▎                                                                                                                                                                                                                                                        | 26/723 [00:01<00:32, 21.45it/s]
+Loading weights:   4%|██████████▎                                                                                                                                                                                                                                                       | 29/723 [00:01<00:34, 19.89it/s]
+Loading weights:   5%|████████████▍                                                                                                                                                                                                                                                     | 35/723 [00:01<00:24, 27.61it/s]
+Loading weights:   5%|█████████████▉                                                                                                                                                                                                                                                    | 39/723 [00:01<00:23, 29.41it/s]
+Loading weights:   7%|███████████████████▎                                                                                                                                                                                                                                              | 54/723 [00:01<00:11, 57.61it/s]
+Loading weights:  31%|████████████████████████████████████████████████████████████████████████████████                                                                                                                                                                                | 226/723 [00:01<00:01, 475.67it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 385.98it/s]

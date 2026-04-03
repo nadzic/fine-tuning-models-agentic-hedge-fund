@@ -1,0 +1,123 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken. Using Xformers instead. No performance changes will be seen.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+=== Prompt ===
+
+Ticker: COIN
+Company: Coinbase Global, Inc.
+Metrics:
+- Revenue growth: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Operating margin trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Free cash flow trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Valuation note: PERatio reported by Alpha Vantage: 36.13; EVToRevenue reported by Alpha Vantage: 5.34; MarketCapitalization reported by Alpha Vantage: 43358245000
+- Angle emphasis: risk / valuation angle
+- Segment growth details: unknown
+News:
+- No recent news items available; rely on company and financial context.
+Context:
+- Coinbase Global, Inc. provides financial infrastructure and technology for the crypto economy. The company is headquartered in Wilmington, Delaware.
+- Sector: FINANCIAL SERVICES
+- Industry: FINANCIAL DATA & STOCK EXCHANGES
+
+=== Base model output ===
+
+**MEMO: COIN**
+
+**Date:** October 26, 2023
+**Ticker:** COIN
+**Company:** Coinbase Global, Inc.
+**Sector:** FINANCIAL SERVICES
+**Industry:** FINANCIAL DATA & STOCK EXCHANGES
+
+**Overview**
+Coinbase Global, Inc. provides financial infrastructure and technology for the crypto economy, headquartered in Wilmington, Delaware. The company operates within the financial services sector, specifically focusing on financial data and stock exchanges.
+
+**Financial Performance**
+Recent SEC filings for FY2025Q3 indicate a deterioration in key financial metrics:
+*   **Revenue Growth:** Decreasing.
+*   **Operating Margin:** Decreasing.
+*   **Free Cash Flow:** Decreasing.
+
+**Valuation Analysis**
+Current valuation multiples, as reported by Alpha Vantage, reflect the following:
+*   **P/E Ratio:** 36.13
+*   **EV/Revenue:** 5.34
+*   **Market Capitalization:** $43.36 Billion
+
+**Investment Thesis**
+*   **Risk Angle:** The company is currently facing headwinds across the board, with revenue growth, operating margins, and free cash flow all trending downward in the most recent reporting periods (FY2025Q3). This simultaneous contraction in top-line growth and profitability suggests a period of significant operational pressure.
+*   **Valuation Angle:** While the EV/Revenue multiple of 5.34 appears relatively compressed compared to the P/E ratio of 36.13, the valuation remains elevated given the lack of recent news catalysts and the confirmed decline in cash flow generation. The market capitalization of $43.36 Billion implies a substantial valuation that may be under pressure if the negative trends in FY2025Q3 persist.
+
+**Segment Growth**
+No specific segment growth details are available.
+
+**News**
+No recent news items are available; analysis relies on the provided company and financial context.
+
+=== Fine-tuned output ===
+
+Business Overview:
+COIN operates in FINANCIAL SERVICES, specifically FINANCIAL DATA & STOCK EXCHANGES. The company provides financial infrastructure and technology for the crypto economy, headquartered in Wilmington, Delaware.
+
+Bullish Thesis:
+The memo emphasizes valuation and risk considerations. Reported context is:
+- Revenue growth: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Operating margin trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Free cash flow trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Valuation note: PERatio reported by Alpha Vantage: 36.13; EVToRevenue reported by Alpha Vantage: 5.34; MarketCapitalization reported by Alpha Vantage: 43358245000
+- Segment growth details: unknown
+- News: No recent news items available; rely on company and financial context.
+- Business overview: Coinbase Global, Inc. provides financial infrastructure and technology for the crypto economy. The company is headquartered in Wilmington, Delaware.
+
+Bearish Thesis:
+The memo emphasizes valuation and risk considerations. Reported context is:
+- Revenue growth: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Operating margin trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Free cash flow trend: decreasing based on SEC companyfacts across recent reported periods (FY2025Q3, FY2025Q3)
+- Valuation note: PERatio reported by Alpha Vantage: 36.13; EVToRevenue reported by Alpha Vantage: 5.34; MarketCapitalization reported by Alpha Vantage: 43358245000
+- Segment growth details:
+
+
+=== STDERR ===
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   0%|▎                                                                                                                                                                                                                                                                  | 1/723 [00:00<01:13,  9.80it/s]
+Loading weights:   1%|██▏                                                                                                                                                                                                                                                                | 6/723 [00:00<00:25, 28.66it/s]
+Loading weights:   1%|███▏                                                                                                                                                                                                                                                               | 9/723 [00:00<00:37, 19.19it/s]
+Loading weights:   2%|████▎                                                                                                                                                                                                                                                             | 12/723 [00:00<00:35, 20.31it/s]
+Loading weights:   2%|█████▎                                                                                                                                                                                                                                                            | 15/723 [00:00<00:33, 20.98it/s]
+Loading weights:   3%|███████▍                                                                                                                                                                                                                                                          | 21/723 [00:00<00:24, 28.66it/s]
+Loading weights:   3%|████████▌                                                                                                                                                                                                                                                         | 24/723 [00:00<00:26, 26.66it/s]
+Loading weights:   4%|█████████▋                                                                                                                                                                                                                                                        | 27/723 [00:01<00:33, 20.87it/s]
+Loading weights:   5%|████████████▏                                                                                                                                                                                                                                                     | 34/723 [00:01<00:23, 29.90it/s]
+Loading weights:   5%|█████████████▌                                                                                                                                                                                                                                                    | 38/723 [00:01<00:26, 26.20it/s]
+Loading weights:   7%|███████████████████▎                                                                                                                                                                                                                                              | 54/723 [00:01<00:12, 53.42it/s]
+Loading weights:  25%|████████████████████████████████████████████████████████████████                                                                                                                                                                                                | 181/723 [00:01<00:01, 329.57it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 394.41it/s]
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   1%|█▊                                                                                                                                                                                                                                                                 | 5/723 [00:00<00:14, 49.96it/s]
+Loading weights:   1%|███▌                                                                                                                                                                                                                                                              | 10/723 [00:00<00:37, 19.16it/s]
+Loading weights:   2%|████▋                                                                                                                                                                                                                                                             | 13/723 [00:00<00:42, 16.55it/s]
+Loading weights:   3%|███████▏                                                                                                                                                                                                                                                          | 20/723 [00:00<00:29, 24.10it/s]
+Loading weights:   3%|████████▏                                                                                                                                                                                                                                                         | 23/723 [00:01<00:37, 18.65it/s]
+Loading weights:   4%|█████████▎                                                                                                                                                                                                                                                        | 26/723 [00:01<00:36, 19.36it/s]
+Loading weights:   4%|██████████▎                                                                                                                                                                                                                                                       | 29/723 [00:01<00:33, 20.49it/s]
+Loading weights:   6%|██████████████▎                                                                                                                                                                                                                                                   | 40/723 [00:01<00:17, 39.13it/s]
+Loading weights:  13%|█████████████████████████████████▊                                                                                                                                                                                                                               | 95/723 [00:01<00:04, 156.30it/s]
+Loading weights:  76%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                                                             | 548/723 [00:01<00:00, 1235.28it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 418.47it/s]

@@ -1,0 +1,90 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken. Using Xformers instead. No performance changes will be seen.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+==((====))==  Unsloth 2026.3.17: Fast Qwen3_5 patching. Transformers: 5.3.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 23.542 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+=== Prompt ===
+
+Ticker: ELVN
+Facts:
+- Revenue growth is healthy.
+- Operating margin has expanded.
+- Free cash flow remains strong.
+- Valuation context is incomplete.
+- Key risk is that operating strength cannot be translated into an investment conclusion without better valuation evidence.
+
+=== Base model output ===
+
+**MEMO: ELVN**
+
+**Overview**
+ELVN demonstrates robust operational fundamentals, characterized by healthy revenue growth and an expanding operating margin. Concurrently, the company maintains strong free cash flow generation.
+
+**Investment Thesis**
+Despite the positive operational trajectory, the current valuation context remains incomplete. The market lacks sufficient pricing action to reflect the company's operational strength.
+
+**Risks**
+The primary risk is that ELVN's current operating strength cannot be translated into a definitive investment conclusion without better valuation evidence. Until the valuation gap is resolved, the thesis remains unconfirmed.
+
+=== Fine-tuned output ===
+
+Business Overview:
+Based on the provided facts, the company shows healthy revenue growth, expanding operating margin, and strong free cash flow. The prompt does not provide enough detail to define the business more precisely.
+
+Bullish Thesis:
+The bullish case is that revenue growth is healthy, operating margin has expanded, and free cash flow remains strong. These operating metrics support the view that the business is improving.
+
+Bearish Thesis:
+The bearish case is that valuation context is incomplete. Without better evidence on how the market is pricing the company, it is premature to conclude that the operating setup translates into a compelling investment opportunity.
+
+Valuation Context:
+Valuation context is incomplete. The prompt does not provide enough detail to assess whether the reported operating strength is already reflected in the price.
+
+Conclusion:
+Conclusion is limited. The operating profile is positive, but without better valuation evidence, a definitive buy or sell recommendation cannot be made.
+
+Confidence:
+Medium
+
+
+=== STDERR ===
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   1%|█▊                                                                                                                                                                                                                                                                 | 5/723 [00:00<00:14, 49.89it/s]
+Loading weights:   1%|███▌                                                                                                                                                                                                                                                              | 10/723 [00:00<00:35, 20.28it/s]
+Loading weights:   2%|████▋                                                                                                                                                                                                                                                             | 13/723 [00:00<00:41, 17.01it/s]
+Loading weights:   3%|███████▏                                                                                                                                                                                                                                                          | 20/723 [00:00<00:30, 23.41it/s]
+Loading weights:   3%|████████▏                                                                                                                                                                                                                                                         | 23/723 [00:01<00:35, 19.61it/s]
+Loading weights:   4%|█████████▎                                                                                                                                                                                                                                                        | 26/723 [00:01<00:35, 19.90it/s]
+Loading weights:   4%|██████████▎                                                                                                                                                                                                                                                       | 29/723 [00:01<00:33, 20.92it/s]
+Loading weights:   6%|██████████████▉                                                                                                                                                                                                                                                   | 42/723 [00:01<00:15, 43.87it/s]
+Loading weights:  12%|███████████████████████████████▎                                                                                                                                                                                                                                 | 88/723 [00:01<00:04, 140.27it/s]
+Loading weights:  69%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                                                                              | 500/723 [00:01<00:00, 1129.13it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 425.07it/s]
+
+Loading weights:   0%|                                                                                                                                                                                                                                                                           | 0/723 [00:00<?, ?it/s]
+Loading weights:   0%|▎                                                                                                                                                                                                                                                                  | 1/723 [00:00<01:13,  9.84it/s]
+Loading weights:   1%|██▌                                                                                                                                                                                                                                                                | 7/723 [00:00<00:26, 27.05it/s]
+Loading weights:   1%|███▌                                                                                                                                                                                                                                                              | 10/723 [00:00<00:32, 22.22it/s]
+Loading weights:   2%|████▋                                                                                                                                                                                                                                                             | 13/723 [00:00<00:42, 16.70it/s]
+Loading weights:   2%|█████▎                                                                                                                                                                                                                                                            | 15/723 [00:00<00:40, 17.27it/s]
+Loading weights:   3%|███████▍                                                                                                                                                                                                                                                          | 21/723 [00:00<00:26, 26.66it/s]
+Loading weights:   3%|████████▌                                                                                                                                                                                                                                                         | 24/723 [00:01<00:30, 23.02it/s]
+Loading weights:   4%|█████████▋                                                                                                                                                                                                                                                        | 27/723 [00:01<00:39, 17.78it/s]
+Loading weights:   5%|████████████▏                                                                                                                                                                                                                                                     | 34/723 [00:01<00:24, 27.60it/s]
+Loading weights:   5%|█████████████▌                                                                                                                                                                                                                                                    | 38/723 [00:01<00:22, 30.07it/s]
+Loading weights:   8%|█████████████████████                                                                                                                                                                                                                                             | 59/723 [00:01<00:09, 70.88it/s]
+Loading weights:  34%|███████████████████████████████████████████████████████████████████████████████████████▊                                                                                                                                                                        | 248/723 [00:01<00:00, 519.67it/s]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 723/723 [00:01<00:00, 389.95it/s]
