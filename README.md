@@ -1,5 +1,14 @@
 # Fine-Tuning Financial Memo Models
 
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
+![uv](https://img.shields.io/badge/uv-package%20manager-6e56cf)
+![Hugging%20Face](https://img.shields.io/badge/Hugging%20Face-models%20%26%20hub-FFD21E?logo=huggingface&logoColor=black)
+![Qwen](https://img.shields.io/badge/Base%20Model-Qwen3.5-8A2BE2)
+![Unsloth](https://img.shields.io/badge/Training-Unsloth-0ea5e9)
+![QLoRA](https://img.shields.io/badge/Fine--tuning-QLoRA-22c55e)
+![RunPod](https://img.shields.io/badge/GPU-RunPod-f97316)
+![PEFT](https://img.shields.io/badge/Adapter-PEFT-ef4444)
+
 This repo is an end-to-end workflow for building a small financial memo dataset, fine-tuning a QLoRA adapter, and comparing the resulting model against the base model.
 
 At a high level, the flow is:
